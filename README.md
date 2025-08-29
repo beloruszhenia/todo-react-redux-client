@@ -1,45 +1,157 @@
-# Getting Started with Create React App
+# TODO React Redux Client
+
+## 📋 Опис проекту
+
+Це клієнтська частина повнофункціонального TODO додатка, створеного з використанням React, Redux Toolkit та сучасних веб-технологій. Додаток підтримує JWT авторизацію, Google OAuth, управління завданнями та має адаптивний дизайн.
+
+## 🏗️ Архітектура проекту
+
+### Основні технології:
+- **React 19.1.1** - основний фреймворк
+- **Redux Toolkit 2.0.1** - управління станом
+- **React Router DOM 6.20.1** - маршрутизація
+- **Axios 1.6.2** - HTTP клієнт для API запитів
+
+### Структура проекту:
+
+```
+src/
+├── components/           # React компоненти
+│   ├── ApiTest.js       # Тестування API
+│   ├── Home.js          # Головна сторінка
+│   ├── Login.js         # Форма входу
+│   ├── Register.js      # Форма реєстрації
+│   ├── OAuthCallback.js # Обробка OAuth callback
+│   ├── PrivateRoute.js  # Захищені маршрути
+│   ├── TodoList.js      # Список завдань
+│   ├── TodoItem.js      # Окреме завдання
+│   ├── TodoForm.js      # Форма додавання завдань
+│   └── TodoFilter.js    # Фільтр завдань
+├── services/            # API сервіси
+│   ├── api.js          # Конфігурація Axios
+│   ├── authService.js  # Сервіс авторизації
+│   └── todoService.js  # Сервіс управління завданнями
+├── store/              # Redux store
+│   ├── store.js        # Конфігурація store
+│   └── slices/         # Redux slices
+│       ├── authSlice.js # Стан авторизації
+│       └── todoSlice.js # Стан завдань
+├── App.js              # Головний компонент додатка
+├── App.css             # Стилі додатка
+└── index.js            # Точка входу
+```
+
+## 🔐 Система авторизації
+
+### Підтримувані методи:
+- **JWT авторизація** - стандартна авторизація з email/пароль
+- **Google OAuth 2.0** - вхід через Google акаунт
+- **Автоматичне оновлення токенів** - refresh token система
+- **Захищені маршрути** - доступ тільки для авторизованих користувачів
+
+### Функціонал авторизації:
+- Реєстрація нових користувачів
+- Вхід існуючих користувачів
+- Автоматичне збереження стану авторизації
+- Безпечний вихід з системи
+
+## ✅ Функціонал TODO
+
+### Основні можливості:
+- **Створення завдань** - додавання нових TODO
+- **Редагування завдань** - зміна тексту завдань
+- **Відзначення виконаних** - toggle статус завершення
+- **Видалення завдань** - повне видалення TODO
+- **Фільтрація** - перегляд всіх/активних/завершених
+
+### Стан завдань:
+- `pending` - завдання в процесі
+- `completed` - завершене завдання
+- Автоматична синхронізація з сервером
+
+## 🎨 UI/UX особливості
+
+### Дизайн:
+- **Адаптивний дизайн** - працює на всіх пристроях
+- **Сучасний інтерфейс** - чистий та інтуїтивний
+- **Анімації** - плавні переходи та ефекти
+- **Українська локалізація** - повністю українською мовою
+
+### Компоненти:
+- Модальні вікна для редагування
+- Інтерактивні кнопки та форми
+- Індикатори завантаження
+- Обробка помилок з user-friendly повідомленнями
+
+## 🔧 Налаштування та запуск
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 🚀 Доступні команди
 
-In the project directory, you can run:
+### Запуск в режимі розробки:
+```bash
+npm start
+```
+Відкриває додаток у браузері за адресою [http://localhost:3000](http://localhost:3000)
 
-### `npm start`
+### Запуск тестів:
+```bash
+npm test
+```
+Запускає тести в інтерактивному режимі
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Збірка для продакшн:
+```bash
+npm run build
+```
+Створює оптимізовану збірку у папці `build/`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌐 Інтеграція з Backend
 
-### `npm test`
+### API Endpoints:
+- `POST /api/auth/register` - реєстрація користувача
+- `POST /api/auth/login` - вхід користувача  
+- `GET /api/auth/google` - Google OAuth
+- `GET /api/auth/me` - інформація про користувача
+- `GET /api/todos` - отримання всіх завдань
+- `POST /api/todos` - створення завдання
+- `PUT /api/todos/:id` - оновлення завдання
+- `DELETE /api/todos/:id` - видалення завдання
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Змінні середовища:
+```env
+REACT_APP_API_URL=http://localhost:4000/api
+PORT=3000
+```
 
-### `npm run build`
+## 📱 Використання
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Реєстрація/Вхід** - створіть акаунт або увійдіть
+2. **Google OAuth** - швидкий вхід через Google
+3. **Додавання завдань** - використовуйте форму вгорі
+4. **Управління** - клікайте на завдання для редагування
+5. **Фільтрація** - використовуйте кнопки фільтрів
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ Технічні деталі
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Redux Store:
+- **authSlice** - стан користувача та авторизації
+- **todoSlice** - стан завдань та операцій CRUD
+- **Middleware** - автоматична обробка async thunks
 
-### `npm run eject`
+### Роутинг:
+- Публічні маршрути: `/login`, `/register`
+- Захищені маршрути: `/`, `/todos`
+- OAuth callback: `/auth/callback`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Безпека:
+- JWT токени зберігаються в localStorage
+- Автоматична перевірка авторизації
+- Захист від CSRF атак
+- Валідація форм на клієнті
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
+## 📚 Додаткові ресурси
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
