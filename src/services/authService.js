@@ -40,8 +40,8 @@ const authService = {
 
   // Get Google OAuth URL
   getGoogleOAuthUrl: () => {
-    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api';
-    return `${API_URL}/auth/google`;
+    const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+    return `${API_URL}/api/auth/google`;
   },
 
   // Handle OAuth callback - не використовується, оскільки сервер сам перенаправляє
